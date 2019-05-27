@@ -13,8 +13,11 @@ class Phone(models.Model):
 
     person = models.ForeignKey(verbose_name=_('Person'), to='contact.Person', on_delete=models.CASCADE)
     role = models.CharField(verbose_name=_('Role'), max_length=30, choices=ROLE_CHOICES, default=ROLE_MOBILE)
-    number = models.CharField(verbose_name=_('Number'), max_length=20)
+    number = models.CharField(verbose_name=_('Number'), max_length=20, unique=True)
 
     def __str__(self) -> str:
         return f'{self.person} {self.number} ({self.role})'
 
+    class Meta:
+        verbose_name = _('Phone')
+        verbose_name_plural = _('Phones')

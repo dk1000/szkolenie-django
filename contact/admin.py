@@ -29,11 +29,12 @@ class PersonAdmin(admin.ModelAdmin):
             'fields': ['last_name', 'first_name']}),
 
         (_('Personal Data'), {
-            'fields': ['pesel', 'date_of_birth']}),
+            'fields': ['pesel', 'date_of_birth', 'avatar']}),
     ]
 
     def field_age(self, model):
-        return str(model.age())
+        return model.age()
 
     field_age.short_description = _('Age')
     field_age.admin_order_field = 'date_of_birth'
+    field_age.default_if_none = 'n/a'
