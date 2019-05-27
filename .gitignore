@@ -1,0 +1,46 @@
+## Private
+_config/
+_database/
+
+## Virtualenv
+venv/
+venv-*/
+virtualenv/
+virtualenv-*/
+.venv/
+.venv-*/
+.virtualenv/
+.virtualenv-*/
+
+## Compiled and environment
+__pycache__/
+.mypy_cache/
+*.pyc
+~$*
+*.spec
+.DS_Store
+
+## Distribution / packaging
+.env
+build/
+dist/
+downloads/
+eggs/
+lib/
+lib64/
+sdist/
+*.egg-info/
+*.egg
+
+## Django
+*.log
+*.sqlite3
+_static
+_media
+
+## Sphinx documentation
+docs/_build/
+_docs/
+
+## IDE
+.idea
