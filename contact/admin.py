@@ -37,11 +37,3 @@ class PersonAdmin(admin.ModelAdmin):
 
     field_age.short_description = _('Age')
     field_age.admin_order_field = 'date_of_birth'
-
-
-@admin.register(Phone)
-class PhoneAdmin(admin.ModelAdmin):
-    autocomplete_fields = ['person']
-    radio_fields = {
-        'role': admin.VERTICAL
-    }
