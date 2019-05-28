@@ -30,11 +30,12 @@ class PersonAdmin(admin.ModelAdmin):
     ordering = ['last_name', 'first_name']
     inlines = [AddressInline, PhoneInline, EmailInline]
     radio_fields = {
+        'is_friend': admin.VERTICAL,
         'gender': admin.HORIZONTAL,
     }
     fieldsets = [
         (None, {
-            'fields': ['last_name', 'first_name']}),
+            'fields': ['last_name', 'first_name', 'is_friend']}),
 
         (_('Personal Data'), {
             'fields': ['pesel', 'date_of_birth', 'image', 'height', 'gender']}),

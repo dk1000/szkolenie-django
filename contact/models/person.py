@@ -10,6 +10,14 @@ class Person(models.Model):
     HEIGHT_MIN = 100
     HEIGHT_MAX = 220
 
+    IS_FRIEND_YES = True
+    IS_FRIEND_NO = False
+    IS_FRIEND_UNSPECIFIED = None
+    IS_FRIEND_CHOICES = [
+        (IS_FRIEND_YES, _('My best friend')),
+        (IS_FRIEND_NO, _('Not a friend')),
+        (IS_FRIEND_UNSPECIFIED, _('Unspecified'))]
+
     GENDER_MALE = 'male'
     GENDER_FEMALE = 'female'
     GENDER_UNSPECIFIED = None
@@ -17,6 +25,12 @@ class Person(models.Model):
         (GENDER_MALE, _('Male')),
         (GENDER_FEMALE, _('Female')),
         (GENDER_UNSPECIFIED, _('Unspecified'))]
+
+    add_date = models.DateTimeField(verbose_name=_('Date Added'), auto_now_add=True)
+    #add_author
+
+    modified_date = models.DateTimeField(verbose_name=_('Date Modified'), auto_now=True)
+    #modified_author
 
     first_name = models.CharField(verbose_name=_('First Name'), max_length=30)
     last_name = models.CharField(verbose_name=_('Last Name'), max_length=30)
@@ -27,6 +41,7 @@ class Person(models.Model):
     notes = models.TextField(verbose_name=_('Notes'), blank=True, null=True, default=None)
     height = models.DecimalField(verbose_name=_('Height'), max_digits=4, decimal_places=1, validators=[MinValueValidator(HEIGHT_MIN), MaxValueValidator(HEIGHT_MAX)], blank=True, null=True, default=None)
     gender = models.CharField(verbose_name=_('Gender'), max_length=30, choices=GENDER_CHOICES, blank=True, null=True, default=None)
+    is_friend = models.BooleanField(verbose_name=_('Is Friend?'), choices=IS_FRIEND_CHOICES, blank=True, null=True, default=None)
 
     def age(self) -> Optional[int]:
         if not self.date_of_birth:
