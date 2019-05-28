@@ -1,1 +1,17 @@
-hello
+<style>
+    .friend {color: #00f}
+    .not-friend {color: #f00}
+</style>
+
+<ol>
+{% for contact in contacts %}
+
+    <li class="
+        {% if contact.is_friend %}
+            friend
+        {% else %}
+            not-friend
+        {% endif %}
+    ">{{ contact.last_name }} {{ contact.first_name }}</li>
+{% endfor %}
+</ol>
