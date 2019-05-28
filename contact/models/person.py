@@ -26,14 +26,14 @@ class Person(models.Model):
         (GENDER_FEMALE, _('Female')),
         (GENDER_UNSPECIFIED, _('Unspecified'))]
 
-    add_date = models.DateTimeField(verbose_name=_('Date Added'), auto_now_add=True)
-    #add_author
+    add_date = models.DateTimeField(verbose_name=_('Add Date'), auto_now_add=True)
+    add_author = models.ForeignKey(verbose_name=_('Add Author'), to='auth.User', on_delete=models.CASCADE, related_name='add_author')
 
-    modified_date = models.DateTimeField(verbose_name=_('Date Modified'), auto_now=True)
-    #modified_author
+    modified_date = models.DateTimeField(verbose_name=_('Modified Date'), auto_now=True)
+    modified_author = models.ForeignKey(verbose_name=_('Modified Author'), to='auth.User', on_delete=models.CASCADE, related_name='modified_author')
 
     first_name = models.CharField(verbose_name=_('First Name'), max_length=30)
-    last_name = models.CharField(verbose_name=_('Last Name'), max_length=30)
+    last_name = models.CharField(verbose_name=_('Last Name'), max_length=30, db_index=True)
     date_of_birth = models.DateField(verbose_name=_('Date of Birth'), blank=True, null=True, default=None)
     pesel = models.PositiveIntegerField(verbose_name=_('PESEL'), help_text=_('Type your PESEL number'), blank=True, null=True, default=None)
     image = models.ImageField(verbose_name=_('Image'), upload_to='image/', blank=True, null=True, default=None)
@@ -42,6 +42,7 @@ class Person(models.Model):
     height = models.DecimalField(verbose_name=_('Height'), max_digits=4, decimal_places=1, validators=[MinValueValidator(HEIGHT_MIN), MaxValueValidator(HEIGHT_MAX)], blank=True, null=True, default=None)
     gender = models.CharField(verbose_name=_('Gender'), max_length=30, choices=GENDER_CHOICES, blank=True, null=True, default=None)
     is_friend = models.BooleanField(verbose_name=_('Is Friend?'), choices=IS_FRIEND_CHOICES, blank=True, null=True, default=None)
+    friends = models.ManyToManyField(verbose_name=_('Friends'), to='contact.Person', blank=True, default=None)
 
     def age(self) -> Optional[int]:
         if not self.date_of_birth:

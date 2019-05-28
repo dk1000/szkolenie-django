@@ -24,6 +24,7 @@ class PhoneInline(admin.TabularInline):
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
     list_filter = ['date_of_birth']
+    autocomplete_fields = ['friends']
     list_display_links = ['first_name', 'last_name']
     search_fields = ['^last_name']
     list_display = ['last_name', 'first_name', 'date_of_birth', 'field_age']
@@ -41,7 +42,7 @@ class PersonAdmin(admin.ModelAdmin):
             'fields': ['pesel', 'date_of_birth', 'image', 'height', 'gender']}),
 
         (_('Other'), {
-            'fields': ['homepage', 'notes']}),
+            'fields': ['homepage', 'notes', 'friends']}),
     ]
 
     def field_age(self, model):
