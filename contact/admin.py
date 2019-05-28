@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 from contact.models import Person, Phone, Address, Email
 
@@ -33,7 +34,7 @@ class PersonAdmin(admin.ModelAdmin):
     autocomplete_fields = ['friends']
     list_display_links = ['first_name', 'last_name']
     search_fields = ['^last_name']
-    list_display = ['last_name', 'first_name', 'date_of_birth', 'field_age']
+    list_display = ['last_name', 'first_name', 'field_pesel', 'date_of_birth', 'field_age', 'field_born_in_fifties']
     ordering = ['last_name', 'first_name']
     inlines = [AddressInline, PhoneInline, EmailInline]
     radio_fields = {
@@ -66,7 +67,22 @@ class PersonAdmin(admin.ModelAdmin):
 
     field_age.short_description = _('Age')
     field_age.admin_order_field = 'date_of_birth'
-    field_age.default_if_none = 'n/a'
+    field_age.empty_value_display = 'n/a'
+
+    def field_born_in_fifties(self, model):
+        if model.date_of_birth:
+            return model.date_of_birth.strftime('%Y')[:3] == '195'
+
+    field_born_in_fifties.boolean = True
+
+    def field_pesel(self, model):
+        if model.pesel:
+            return format_html(f'<span style="color: #f00;">{model.pesel}</span>')
+        else:
+            return None
+
+    field_pesel.admin_order_field = 'first_name'
+    field_pesel.empty_value_display = ''
 
     class Media:
         js = [
