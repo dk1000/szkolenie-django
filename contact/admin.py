@@ -3,6 +3,12 @@ from django.utils.translation import gettext_lazy as _
 from contact.models import Person, Phone, Address, Email
 
 
+admin.site.site_header = _('Addressbook')
+admin.site.index_title = _('Dashboard')
+admin.site.site_title = _('Addressbook')
+# admin.site.index_template = 'admin/dashboard.html'
+
+
 class AddressInline(admin.StackedInline):
     model = Address
     extra = 0
