@@ -45,6 +45,16 @@ class PersonAdmin(admin.ModelAdmin):
             'fields': ['homepage', 'notes', 'friends']}),
     ]
 
+    def save_model(self, request, obj, form, change):
+        obj.modified_author = request.user
+
+        if not change:
+            # if object is created: change == True
+            # if object is updated: change == False
+            obj.add_author = request.user
+
+        return super().save_model(request, obj, form, change)
+
     def field_age(self, model):
         return model.age()
 

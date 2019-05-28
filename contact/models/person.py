@@ -28,7 +28,6 @@ class Person(models.Model):
 
     add_date = models.DateTimeField(verbose_name=_('Add Date'), auto_now_add=True)
     add_author = models.ForeignKey(verbose_name=_('Add Author'), to='auth.User', on_delete=models.CASCADE, related_name='add_author')
-
     modified_date = models.DateTimeField(verbose_name=_('Modified Date'), auto_now=True)
     modified_author = models.ForeignKey(verbose_name=_('Modified Author'), to='auth.User', on_delete=models.CASCADE, related_name='modified_author')
 
