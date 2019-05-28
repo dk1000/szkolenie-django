@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-27 11:52+0200\n"
+"POT-Creation-Date: 2019-05-28 10:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,14 +18,140 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: models.py:6
-msgid "Imie"
-msgstr "First Name"
+#: admin.py:36
+msgid "Personal Data"
+msgstr ""
 
-#: models.py:7
-msgid "Nazwisko"
-msgstr "Last Name"
+#: admin.py:39 models/address.py:12 models/email.py:12 models/phone.py:14
+msgid "Other"
+msgstr ""
 
-#: models.py:8
-msgid "Data urodzenia"
-msgstr "Date of Birth"
+#: admin.py:46
+msgid "Age"
+msgstr ""
+
+#: apps.py:7
+msgid "Contact"
+msgstr ""
+
+#: models/address.py:10 models/email.py:10 models/phone.py:11
+msgid "Work"
+msgstr ""
+
+#: models/address.py:11 models/email.py:11 models/phone.py:12
+msgid "Home"
+msgstr ""
+
+#: models/address.py:14 models/email.py:14 models/person.py:28
+#: models/phone.py:16
+msgid "Person"
+msgstr ""
+
+#: models/address.py:15 models/email.py:15 models/phone.py:17
+msgid "Role"
+msgstr ""
+
+#: models/address.py:16
+msgid "Street"
+msgstr ""
+
+#: models/address.py:17
+msgid "House Number"
+msgstr ""
+
+#: models/address.py:18
+msgid "Apartment"
+msgstr ""
+
+#: models/address.py:19
+msgid "Post Code"
+msgstr ""
+
+#: models/address.py:20
+msgid "City"
+msgstr ""
+
+#: models/address.py:21
+msgid "State"
+msgstr ""
+
+#: models/address.py:22
+msgid "Country"
+msgstr ""
+
+#: models/address.py:28
+msgid "Address"
+msgstr ""
+
+#: models/address.py:29
+msgid "Addresses"
+msgstr ""
+
+#: models/email.py:16 models/phone.py:18
+msgid "Number"
+msgstr ""
+
+#: models/email.py:22
+msgid "Email"
+msgstr ""
+
+#: models/email.py:23
+msgid "Emails"
+msgstr ""
+
+#: models/person.py:9
+msgid "First Name"
+msgstr ""
+
+#: models/person.py:10
+msgid "Last Name"
+msgstr ""
+
+#: models/person.py:11
+msgid "Date of Birth"
+msgstr ""
+
+#: models/person.py:12
+msgid "PESEL"
+msgstr ""
+
+#: models/person.py:12
+msgid "Type your PESEL number"
+msgstr ""
+
+#: models/person.py:13
+msgid "Image"
+msgstr ""
+
+#: models/person.py:14
+msgid "Homepage"
+msgstr ""
+
+#: models/person.py:15
+msgid "Notes"
+msgstr ""
+
+#: models/person.py:29
+msgid "People"
+msgstr ""
+
+#: models/phone.py:13
+msgid "Mobile"
+msgstr ""
+
+#: models/phone.py:24
+msgid "Phone"
+msgstr ""
+
+#: models/phone.py:25
+msgid "Phones"
+msgstr ""
+
+#~ msgid "Imie"
+#~ msgstr "First Name"
+
+#~ msgid "Nazwisko"
+#~ msgstr "Last Name"
+
+#~ msgid "Data urodzenia"
+#~ msgstr "Date of Birth"
