@@ -7,6 +7,5 @@ class ContactView(TemplateView):
 
     def get_context_data(self, **kwargs):
         return {
-            'contacts': Person.objects.filter(is_friend=True)
+            'contacts': Person.objects.all()
         }
-
