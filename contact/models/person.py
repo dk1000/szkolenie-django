@@ -42,6 +42,7 @@ class Person(models.Model):
     gender = models.CharField(verbose_name=_('Gender'), max_length=30, choices=GENDER_CHOICES, blank=True, null=True, default=None)
     is_friend = models.BooleanField(verbose_name=_('Is Friend?'), choices=IS_FRIEND_CHOICES, blank=True, null=True, default=None)
     friends = models.ManyToManyField(verbose_name=_('Friends'), to='contact.Person', blank=True, default=None)
+    file = models.FileField(verbose_name=_('File'), upload_to='files/', blank=True, null=True, default=None)
 
     def age(self) -> Optional[int]:
         if not self.date_of_birth:

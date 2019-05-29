@@ -42,7 +42,7 @@ class PersonAdmin(admin.ModelAdmin):
         'gender': admin.HORIZONTAL}
     fieldsets = [
         (None, {'fields': ['last_name', 'first_name', 'is_friend']}),
-        (_('Personal Data'), {'fields': ['pesel', 'date_of_birth', 'image', 'height', 'gender']}),
+        (_('Personal Data'), {'fields': ['pesel', 'date_of_birth', 'image', 'file', 'height', 'gender']}),
         (_('Other'), {'fields': ['homepage', 'notes', 'friends']})]
 
     def save_model(self, request, obj, form, change):

@@ -12,6 +12,7 @@ SECRET_KEY = 'qbj#q16%vbq$og)f5jwlk$q7bmni7b4cn33u)5hc*@gp&ypvs8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+DEBUG_TOOLBAR = True
 
 ALLOWED_HOSTS = [
     '192.168.20.114',
@@ -104,3 +105,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, '_static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '_media')
+
+if DEBUG_TOOLBAR:
+    INSTALLED_APPS.append('debug_toolbar')
+    MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
+    INTERNAL_IPS = ['127.0.0.1']
