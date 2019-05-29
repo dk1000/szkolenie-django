@@ -39,18 +39,11 @@ class PersonAdmin(admin.ModelAdmin):
     inlines = [AddressInline, PhoneInline, EmailInline]
     radio_fields = {
         'is_friend': admin.VERTICAL,
-        'gender': admin.HORIZONTAL,
-    }
+        'gender': admin.HORIZONTAL}
     fieldsets = [
-        (None, {
-            'fields': ['last_name', 'first_name', 'is_friend']}),
-
-        (_('Personal Data'), {
-            'fields': ['pesel', 'date_of_birth', 'image', 'height', 'gender']}),
-
-        (_('Other'), {
-            'fields': ['homepage', 'notes', 'friends']}),
-    ]
+        (None, {'fields': ['last_name', 'first_name', 'is_friend']}),
+        (_('Personal Data'), {'fields': ['pesel', 'date_of_birth', 'image', 'height', 'gender']}),
+        (_('Other'), {'fields': ['homepage', 'notes', 'friends']})]
 
     def save_model(self, request, obj, form, change):
         obj.modified_author = request.user
