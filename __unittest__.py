@@ -1,8 +1,9 @@
 from dataclasses import dataclass
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timezone, timedelta
 from typing import Optional
 from unittest import TestCase
 
+YEAR = 365.2425  # days
 
 @dataclass
 class Person:
@@ -17,8 +18,18 @@ class Person:
             if not isinstance(self.date_of_birth, date):
                 raise TypeError('Date of Birth must be Type[date]')
 
+    def age(self) -> float:
+        if not self.date_of_birth:
+            return None
+
+        age = datetime.now().date() - self.date_of_birth
+        return round(age.days / YEAR)
+
 
 class PersonTest(TestCase):
+    def setUp(self) -> None:
+        self.person = Person(first_name='Jan', last_name='Twardowski')
+
     def test_create_person(self):
         p = Person(first_name='Jan', last_name='Twardowski')
         self.assertEqual(p.first_name, 'Jan')
@@ -45,3 +56,7 @@ class PersonTest(TestCase):
     def test_birth_date_bad_type(self):
         with self.assertRaises(TypeError):
             Person(first_name='Jan', last_name='Twardowski', date_of_birth='1970-01-01')
+
+    def test_age(self):
+        now = date.today() - timedelta(years=50)
+        self.assertEqual(self.person.age(), 50)
