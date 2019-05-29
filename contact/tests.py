@@ -1,8 +1,11 @@
 from datetime import date, timedelta
+from http import HTTPStatus
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.test import TestCase
+from addressbook.tests import TestURL
 from contact.models import Person
+
 
 
 class PersonTest(TestCase):
@@ -29,3 +32,20 @@ class PersonTest(TestCase):
         offset = 50 * settings.YEAR
         self.person.date_of_birth = date.today() - timedelta(days=offset)
         self.assertEqual(self.person.age(), 50)
+
+
+class ContactTestURL(TestURL):
+    assert_http_status = [
+        {'status': HTTPStatus.OK, 'url': '/contacts/'},
+        {'status': HTTPStatus.OK, 'url': '/contact/'},
+    ]
+
+
+class ContactAdminTestURL(TestURL):
+    SHOW_SKIPPED = True
+
+    assert_http_status = [
+        {'status': 200, 'url': '/admin/contact/person/'},
+        {'status': 200, 'url': '/admin/contact/person/add/'},
+        {'status': 200, 'url': '/admin/contact/person/1/change/', 'skip': True},
+    ]
